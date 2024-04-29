@@ -54,9 +54,9 @@ export default {
       httpClient
         .post('/auth', this.credentials)
         .then((response) => {
+          // console.log(response.data.token);
           storage.set('token', response.data.token);
           this.$router.push({ name: 'admin.equipamentos' });
-          // .then((response) => console.log(response.data.token))
         })
         .catch((err) => {
           console.log(err.response);

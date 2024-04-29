@@ -13,10 +13,10 @@ export default {
       equipamentos: []
     };
   },
-  created() {
+  beforeRouteEnter(to, from, next) {
     httpClient
       .get('/tipoEquipamento')
-      .then((response) => (this.equipamentos = response.data))
+      .then((response) => next((vm) => (vm.equipamentos = response.data)))
       .catch((err) => {
         console.log(err.response);
       });
