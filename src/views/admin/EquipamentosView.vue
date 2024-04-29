@@ -4,8 +4,8 @@
 </template>
 
 <script>
-import httpClient from '../../services/HttpClient.js';
-import storage from '../../services/Storage.js';
+import httpClient from '@/services/HttpClient.js';
+import storage from '@/services/Storage.js';
 
 export default {
   data() {
@@ -25,7 +25,7 @@ export default {
     logout() {
       httpClient.post('/auth-refresh').then((response) => {
         storage.remove('token');
-        location.reload();
+        location.href('/auth/login');
       });
     }
   }

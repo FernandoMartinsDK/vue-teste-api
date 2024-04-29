@@ -36,8 +36,8 @@
 </template>
 
 <script>
-import httpClient from '../../services/HttpClient.js';
-import storage from '../../services/Storage.js';
+import httpClient from '@/services/HttpClient.js';
+import storage from '@/services/Storage.js';
 
 export default {
   data() {
@@ -56,7 +56,8 @@ export default {
         .then((response) => {
           // console.log(response.data.token);
           storage.set('token', response.data.token);
-          this.$router.push({ name: 'admin.equipamentos' });
+          // this.$router.push({ name: 'admin.equipamentos' });
+          location.href = '/admin/equipamentos';
         })
         .catch((err) => {
           console.log(err.response);
