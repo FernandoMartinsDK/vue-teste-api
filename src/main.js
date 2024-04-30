@@ -1,14 +1,25 @@
-import './assets/main.css'
+import './assets/main.css';
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
+import httpClient from '@/services/http-client';
 
-import App from './App.vue'
-import router from './router'
+import App from './App.vue';
+import router from './router';
 
-const app = createApp(App)
+const auth = JSON.parse(localStorage.getItem('auth'));
 
-app.use(createPinia())
-app.use(router)
+if (auth) {
+  httpClient.setAuthToken(auth.token);
+}
 
-app.mount('#app')
+const pinia = createPinia();
+pinia.use(piniaPluginPersistedstate);
+
+const app = createApp(App);
+
+app.use(pinia);
+app.use(router);
+
+app.mount('#app');

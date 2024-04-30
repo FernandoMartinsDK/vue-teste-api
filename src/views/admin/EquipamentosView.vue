@@ -4,8 +4,8 @@
 </template>
 
 <script>
-import httpClient from '@/services/HttpClient.js';
-import storage from '@/services/Storage.js';
+import httpClient from '@/services/http-client.js';
+import storage from '@/services/storage';
 
 export default {
   data() {
